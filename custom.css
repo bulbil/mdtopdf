@@ -1,0 +1,51 @@
+html {
+    font-family: "Minion Pro";
+    font-size: 11pt;
+}
+
+@page {
+    size: A4;
+    margin: 1in;
+  @top-right {
+    content: string(doctitle) '  / ' counter(page);
+    margin: 30pt 0 10pt 0;
+    font-size: 1rem;
+  }
+
+}
+
+@page :first {
+
+  @top-right {
+    content: '';
+  }
+
+}
+
+h1 {
+  page-break-before: always;
+  string-set: doctitle content();
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Helvetica Neue;
+  page-break-after: avoid;
+  font-size: 1.5rem;
+}
+
+h1:first-of-type {
+    margin-bottom: 0;
+}
+
+p:first-of-type {
+    margin-top: 0;
+}
+
+table, figure {
+  page-break-inside: avoid;
+}
+
+p {
+    line-height: 2rem;
+}
+
