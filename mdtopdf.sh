@@ -44,10 +44,19 @@ else
     outfile=$(date '+%Y%m%d%S')
 fi
 
-if [ "$FLAGS_inpdir" != '' ]; then
-    in_files=$CURRDIR/$FLAGS_indir/$FLAGS_infile
+if [ ${FLAGS_indir:0:1} == '/' ] || [ ${FLAGS_infile:0:1} == '/' ]
+then
+    if [ "$FLAGS_indir" != '' ]; then
+        in_files=$FLAGS_indir/$FLAGS_infile
+    else
+        in_files=$FLAGS_infile
+    fi
 else
-    in_files=$CURRDIR/$FLAGS_infile
+    if [ "$FLAGS_indir" != '' ]; then
+        in_files=$CURRDIR/$FLAGS_indir/$FLAGS_infile
+    else
+        in_files=$CURRDIR/$FLAGS_infile
+    fi
 fi
 
 stylesheet="$BASE""$FLAGS_style".css
