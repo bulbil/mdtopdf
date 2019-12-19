@@ -28,3 +28,8 @@ Fairly specific to my habits, but in the off chance others may find it useful, h
 ### But?
 
 :construction: Of course, still working on this ... :construction:
+
+- What about accessibility of generated documents?
+- What about ensuring docs meet basic PDF standards?
+- What about images?
+- What about a simple resume template?
