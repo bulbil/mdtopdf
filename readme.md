@@ -2,15 +2,15 @@
 
 ### What?
 
-Personal convenience script symlinked to bin so I can generate reasonable looking pdfs from a folder of markdown while keeping script files and stylesheets organized.
+Personal convenience script for generating reasonable looking pdfs from a markdown file or folder while keeping script files and stylesheets organized.
 
-This may or may not be of use, given how specific to my habits, but in the off chance others may find it useful. I really do think WeasyPrint and upcoming CSS3 standards are vastly underappreciated, whether in Minimal Computing world, web design, or publishing (scholarly and otherwise). 
+Fairly specific to my habits, but in the off chance others may find it useful, here it is. I really do think WeasyPrint and upcoming CSS3 standards are vastly underappreciated, whether in Minimal Computing world, web design, or publishing (scholarly and otherwise). 
 
 ### Why?
 
 - [WeasyPrint](https://weasyprint.org/) + [CSS3 Paged Media standards](https://drafts.csswg.org/css-page-3/) are pretty great
-- Even my word processor is Electron, styled with HTML/CSS, so why futz with LaTeX?
-- Invoking LaTex as a "solution" for plaintext word processing is incredibly limiting, both in terms of technical hurdles and design limitations
+- Even my ["word processor"](https://typora.io/) is styled with HTML/CSS, so why futz with LaTeX?
+- Invoking LaTeX as a "solution" for plaintext word processing undermines the power of markdown IMHO and hugely limiting--in terms of bulky platform specific dependencies, annoying syntax hurdles, typography limitations, and domain specific markup. 
 
 ### How?
 
