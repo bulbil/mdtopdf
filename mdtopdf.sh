@@ -79,7 +79,7 @@ echo -e "\t ... from $in_files"
 echo -e '\n'
 # -----------------------------------------------------------------
 
-cd ~/.bulbil/mdtopdf/
+cd $BASE
 pandoc --standalone --pdf-engine=$FLAGS_engine --css=$stylesheet \
 --output $CURRDIR/$outfile.pdf $in_files
 
