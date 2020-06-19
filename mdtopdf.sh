@@ -21,7 +21,7 @@ if [ $# == 0 ] ; then
     exit 1;
 fi
 
-BASE=/Users/nkashya1/.bulbil/mdtopdf/
+BASE=/Users/nkashya1/.nkashya1/mdtopdf/
 CURRDIR=$(pwd)
 
 . "$BASE"shflags
@@ -44,7 +44,7 @@ else
     outfile=$(date '+%Y%m%d%S')
 fi
 
-if [ ${FLAGS_indir:0:1} == '/' ] || [ ${FLAGS_infile:0:1} == '/' ]
+if [ "${FLAGS_indir:0:1}" == '/' ] || [ "${FLAGS_infile:0:1}" == '/' ]
 then
     if [ "$FLAGS_indir" != '' ]; then
         in_files=$FLAGS_indir/$FLAGS_infile

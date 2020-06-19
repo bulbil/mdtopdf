@@ -1,0 +1,131 @@
+:root {
+  --title-font: "Avenir Next";
+  --body-font: "Minion Pro";
+  --body-font-size: 10pt;
+  --line-height: 1.3rem;
+}
+
+/* body { width: 8.5in; height:11in;
+  margin: 1in;
+} */
+
+html {
+    font-family: var(--body-font);
+    font-size: var(--body-font-size);
+    font-variant-numeric: oldstyle-nums;
+    font-kerning: normal;
+}
+
+header {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0,0,0,.75)
+}
+
+a:hover {
+  color: rgba(0,0,0,1)
+}
+
+@page {
+    size: Letter;
+    margin: 1in;
+}
+
+@page:first {
+  margin-top: 0;
+}
+
+h1 {
+  string-set: doctitle content();
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--title-font);
+  page-break-after: avoid;
+  font-size: 1.25rem;
+}
+
+h1:first-of-type {
+    margin-bottom: 2em;
+}
+
+p:first-of-type {
+    margin-top: 0;
+}
+
+table, figure {
+  page-break-inside: avoid;
+}
+
+p,li {
+    line-height: var(--line-height);
+}
+
+/* two column style */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  min-height: var(--line-height);
+}
+
+ul>li>ul>li {
+  padding-left: 1.5rem;
+}
+ul>li>ul>li::before {
+  content: '· ';
+  font-weight: bold;
+}
+
+section > ul > li:nth-of-type(odd) {
+  font-weight: bold;
+}
+section > ul > li:nth-of-type(even) {
+  margin-top: -1.3rem;
+  padding-left: 5em;
+}
+
+/* section titles */
+
+section::before {
+  content: attr(data-title);
+  text-transform: uppercase;
+  font-family: var(--title-font);
+  font-weight: bold;
+}
+
+/* contact  */
+
+#contact ul li {
+  margin: initial;
+  padding: initial;
+  font-family: inherit;
+  font-weight: inherit;
+  text-align: right;
+}
+
+#contact ul li:first-of-type {
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* projects */
+
+section#projects  > ul > li:nth-of-type(even) {
+  padding-left: 15em;
+}
+
+/* affiliations */
+#affiliations ul li,
+#proficiencies ul li {
+  margin: initial;
+  padding: initial;
+  font-family: inherit;
+  font-weight: inherit;
+}
