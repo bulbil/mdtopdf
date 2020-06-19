@@ -1,5 +1,6 @@
 :root {
   --title-font: "Avenir Next";
+  --title-letter-spacing: .05rem;
   --body-font: "Minion Pro";
   --body-font-size: 10pt;
   --line-height: 1.3rem;
@@ -97,6 +98,7 @@ section::before {
   text-transform: uppercase;
   font-family: var(--title-font);
   font-weight: bold;
+  letter-spacing: var(--title-letter-spacing);
 }
 
 /* contact  */
