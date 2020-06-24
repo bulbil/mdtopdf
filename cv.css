@@ -1,133 +1,167 @@
+/* stylesheet for a simple cv */
+
+@charset "UTF-8";
+
+/* Fonts */
+
+/* requires Avenir Next to be installed locally */
+
+@font-face {
+  font-family: 'Minion Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('MinionPro Regular'), local('MinionPro-Regular');
+}
+@font-face {
+  font-family: 'Minion Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: local('MinionPro Bold'), local('MinionPro-Bold');
+}
+@font-face {
+  font-family: 'Minion Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: local('MinionPro Italic'), local('MinionPro-It');
+}
+
+@font-face {
+  font-family: 'Minion Pro';
+  font-style: italic;
+  font-weight: 900;
+  src: local('MinionPro Bold Italic'), local('MinionPro-BoldIt');
+}
+
+/* base variables */
+
 :root {
-  --title-font: "Avenir Next";
-  --title-letter-spacing: .05rem;
-  --body-font: "Minion Pro";
-  --body-font-size: 10pt;
-  --line-height: 1.3rem;
-}
+    --title-font: "Avenir Next";
+    --title-letter-spacing: .05rem;
+    --body-font: "Minion Pro";
+    --body-font-size: 10pt;
+    --line-height: 1.2rem;
+  }
+  
+  /* for dev purposes */
 
-/* body { width: 8.5in; height:11in;
-  margin: 1in;
-} */
-
-html {
-    font-family: var(--body-font);
-    font-size: var(--body-font-size);
-    font-variant-numeric: oldstyle-nums;
-    font-kerning: normal;
-}
+  /* body { width: 8.5in; height:11in;
+    margin: 1in;
+  } */
+  
+  /* page */
 
 header {
+  /* markup added by pandoc */
   display: none;
-}
-
-a {
-  text-decoration: none;
-  color: rgba(0,0,0,.75)
-}
-
-a:hover {
-  color: rgba(0,0,0,1)
-}
+  }
 
 @page {
-    size: Letter;
-    margin: 1in;
-}
-
-@page:first {
-  margin-top: 0;
-}
+  size: Letter;
+  margin: .75in;
+  }
 
 h1 {
   string-set: doctitle content();
-}
+  }
+
+/* base typography */
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--body-font-size);
+  font-variant-numeric: oldstyle-nums;
+  font-kerning: normal;
+  }
+
+a {
+
+  text-decoration: none;
+  color: rgba(0,0,0,.5)
+  }
+
+a:hover {
+  color: rgba(0,0,0,1)
+  }
 
 h1, h2, h3, h4, h5 {
   font-family: var(--title-font);
   page-break-after: avoid;
-  font-size: 1.25rem;
-}
-
-h1:first-of-type {
-    margin-bottom: 2em;
-}
-
-p:first-of-type {
-    margin-top: 0;
-}
+  font-size: .75rem;
+  }
 
 table, figure {
   page-break-inside: avoid;
-}
+  }
 
 p,li {
-    line-height: var(--line-height);
-}
-
-/* two column style */
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-li {
-  min-height: var(--line-height);
-}
-
-ul>li>ul>li {
-  padding-left: 1.5rem;
-}
-ul>li>ul>li::before {
-  content: '· ';
-  font-weight: bold;
-}
-
-section > ul > li:nth-of-type(odd) {
-  font-weight: bold;
-}
-section > ul > li:nth-of-type(even) {
-  margin-top: -1.3rem;
-  padding-left: 5em;
+  line-height: var(--line-height);
 }
 
 /* section titles */
 
-section::before {
-  content: attr(data-title);
+h2 {
   text-transform: uppercase;
-  font-family: var(--title-font);
   font-weight: bold;
   letter-spacing: var(--title-letter-spacing);
-}
+  }
 
-/* contact  */
+/* two column section */
 
-#contact ul li {
+ul {
+  list-style: none;
+  padding-left: 0;
+  }
+
+li {
+  min-height: var(--line-height);
+  }
+
+li p {
+  margin-bottom: 0;
+  }
+
+ul>li>ul>li {
+  padding-left: 0rem;
+  }
+
+ul>li>ul>li::before {
+  content: '· ';
+  font-weight: bold;
+  }
+
+/* indented list item */
+h2 + ul > li:nth-of-type(even) {
+  margin-top: -1.2rem;
+  padding-left: 10em;
+  }
+
+/* single column section */
+
+h2 + ul:nth-of-type(12) li,
+h2 + ul:nth-of-type(13) li {
+  margin: initial;
+  padding: initial;
+  font-family: inherit;
+  font-weight: inherit;
+  }
+
+/* right header list */
+
+header + ul:nth-of-type(1) {
   margin: initial;
   padding: initial;
   font-family: inherit;
   font-weight: inherit;
   text-align: right;
-}
-
-#contact ul li:first-of-type {
+  }
+  
+header + ul:nth-of-type(1) li:first-of-type {
   font-family: var(--title-font);
   text-transform: uppercase;
   font-weight: bold;
-}
-
-/* projects */
-
-section#projects  > ul > li:nth-of-type(even) {
-  padding-left: 15em;
-}
-
-/* affiliations */
-#affiliations ul li,
-#proficiencies ul li {
-  margin: initial;
-  padding: initial;
-  font-family: inherit;
-  font-weight: inherit;
-}
+  }
+  
+header + ul li a {
+  text-decoration: none;
+  }
+  
