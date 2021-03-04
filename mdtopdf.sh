@@ -80,7 +80,9 @@ echo -e '\n'
 # -----------------------------------------------------------------
 
 cd $BASE
-pandoc --standalone --pdf-engine=$FLAGS_engine --css=$stylesheet \
---output $CURRDIR/$outfile.pdf $in_files
+# pandoc --standalone --pdf-engine=$FLAGS_engine --css=$stylesheet \
+# --output $CURRDIR/$outfile.pdf $in_files
+
+pandoc --standalone --css=$stylesheet --output $CURRDIR/$outfile.html $in_files | pagedjs-cli  -o $CURRDIR/$outfile.pdf $CURRDIR/$outfile.html
 
 # -----------------------------------------------------------------
