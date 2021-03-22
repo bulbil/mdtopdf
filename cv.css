@@ -4,32 +4,23 @@
 
 /* Fonts */
 
-/* requires Avenir Next to be installed locally */
-
+/* requires fonts to be installed locally */
 @font-face {
-  font-family: 'Minion Pro';
+  font-family: "Minion Pro";
   font-style: normal;
-  font-weight: 300;
-  src: local('MinionPro Regular'), local('MinionPro-Regular');
-}
-@font-face {
-  font-family: 'Minion Pro';
-  font-style: normal;
-  font-weight: 900;
-  src: local('MinionPro Bold'), local('MinionPro-Bold');
-}
-@font-face {
-  font-family: 'Minion Pro';
-  font-style: italic;
-  font-weight: 300;
-  src: local('MinionPro Italic'), local('MinionPro-It');
+  src: url("/Users/nkashya1/Library/Fonts/MinionPro-Regular.otf");
 }
 
 @font-face {
-  font-family: 'Minion Pro';
+  font-family: "Minion Pro";
   font-style: italic;
-  font-weight: 900;
-  src: local('MinionPro Bold Italic'), local('MinionPro-BoldIt');
+  src: url("/Users/nkashya1/Library/Fonts/MinionPro-It.otf");
+}
+
+@font-face {
+  font-family: "Avenir";
+  font-style: normal;
+  src: url("/System/Library/Fonts/Avenir Next.ttc");
 }
 
 /* base variables */
@@ -42,12 +33,6 @@
     --line-height: 1.2rem;
   }
   
-  /* for dev purposes */
-
-  /* body { width: 8.5in; height:11in;
-    margin: 1in;
-  } */
-  
   /* page */
 
 header {
@@ -58,11 +43,26 @@ header {
 @page {
   size: Letter;
   margin: .75in;
+  /* border: 1px solid black; */
+
+  @top-right {
+    content: counter(page);
+    margin: 30pt 0 10pt 0;
+    font-size: 1rem;
+  }
+}
+
+@page :first {
+
+  @top-right {
+    content: '';
   }
 
-h1 {
+}
+
+/* h1 {
   string-set: doctitle content();
-  }
+  } */
 
 /* base typography */
 
@@ -94,74 +94,78 @@ table, figure {
   }
 
 p,li {
+  margin-top: 0;
   line-height: var(--line-height);
 }
 
-/* section titles */
-
-h2 {
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: var(--title-letter-spacing);
+ul li a {
+  text-decoration: none;
   }
-
-/* two column section */
 
 ul {
   list-style: none;
   padding-left: 0;
   }
-
-li {
-  min-height: var(--line-height);
-  }
-
-li p {
-  margin-bottom: 0;
-  }
-
-ul>li>ul>li {
-  padding-left: 0rem;
-  }
-
-ul>li>ul>li::before {
-  content: '· ';
-  font-weight: bold;
-  }
-
-/* indented list item */
-h2 + ul > li:nth-of-type(even) {
-  margin-top: -1.2rem;
-  padding-left: 10em;
-  }
-
-/* single column section */
-
-h2 + ul:nth-of-type(12) li,
-h2 + ul:nth-of-type(13) li {
-  margin: initial;
-  padding: initial;
-  font-family: inherit;
-  font-weight: inherit;
-  }
-
-/* right header list */
-
-header + ul:nth-of-type(1) {
-  margin: initial;
-  padding: initial;
-  font-family: inherit;
-  font-weight: inherit;
-  text-align: right;
-  }
   
-header + ul:nth-of-type(1) li:first-of-type {
-  font-family: var(--title-font);
+
+/* section titles */
+
+h2 {
+  float: left;
   text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: var(--title-letter-spacing);
+  width: 100%;
+  margin: var(--line-height) 0 .6rem 0;
   }
-  
-header + ul li a {
-  text-decoration: none;
-  }
-  
+
+/* two column section */
+section:not(.col-1) {
+  float: left;
+  width: 100%;
+}
+
+section:not(.col-1) > p {
+  width: 10%;
+  float: left;
+  clear: left;
+  page-break-after: avoid;
+}
+
+section:not(.col-1) > ul {
+  float: left;
+  clear: left;
+  width: 90%;
+  margin-left: 10%;
+  margin-top: calc(-1.75 * var(--line-height));
+}
+
+section:not(.col-1) > ul > li {
+  margin-bottom: .5rem;
+}
+
+
+section:not(.col-1) ul ul {
+  list-style: disc;
+  /* margin-top: 0; */
+}
+
+/* education  */
+section.education > p,
+section.ed.education > ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+section.education > ul {
+  padding-top: .85rem;
+}
+
+/* project list */
+section.project-list > p {
+  width: 20%;
+}
+
+section.project-list > ul {
+  width: 78%;
+  margin-left: 22%;
+}

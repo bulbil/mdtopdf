@@ -1,5 +1,6 @@
 html {
-    font-family: minionpro;
+    /* font-family: minionpro; */
+    font-family: "Minion Pro";
     font-size: 11pt;
 }
 
@@ -27,7 +28,10 @@ h1 {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: helveticaneue;
+  /* font-family: helveticaneue; */
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 600;
   page-break-after: avoid;
   font-size: 1.25rem;
 }

@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------
 VERSION=0.1.0
 SUBJECT=mdtopdf
-USAGE="Usage: mdtopdf -pfise args"
+USAGE="Usage: mdtopdf -pfised args"
 
 # --- Option processing --------------------------------------------
 if [ $# == 0 ] ; then
@@ -31,6 +31,7 @@ DEFINE_string infile '*md' 'input file' f
 DEFINE_string indir '' 'input directory' i
 DEFINE_string style 'custom' 'stylesheet path' s
 DEFINE_string engine 'weasyprint' 'css engine' e
+DEFINE_string debug '' 'debug mode' d
 
 # parse command line
 FLAGS "$@" || exit 1
@@ -39,9 +40,15 @@ eval set -- "${FLAGS_ARGV}"
 shift $(($OPTIND - 1))
 
 if [ "$FLAGS_prefix" != '' ]; then
-    outfile="$FLAGS_prefix"-$(date '+%Y%m%d%S')
+    outfile="$FLAGS_prefix"
 else
     outfile=$(date '+%Y%m%d%S')
+fi
+
+if [ "$FLAGS_debug" == 1 ]; then
+    debug='-d'
+else
+    debug=''
 fi
 
 if [ "${FLAGS_indir:0:1}" == '/' ] || [ "${FLAGS_infile:0:1}" == '/' ]
@@ -59,6 +66,7 @@ else
     fi
 fi
 
+normalize="$BASE"normalize.css
 stylesheet="$BASE""$FLAGS_style".css
 
 # --- Locks -------------------------------------------------------
@@ -80,9 +88,17 @@ echo -e '\n'
 # -----------------------------------------------------------------
 
 cd $BASE
+
 # pandoc --standalone --pdf-engine=$FLAGS_engine --css=$stylesheet \
 # --output $CURRDIR/$outfile.pdf $in_files
 
-pandoc --standalone --css=$stylesheet --output $CURRDIR/$outfile.html $in_files | pagedjs-cli  -o $CURRDIR/$outfile.pdf $CURRDIR/$outfile.html
+pandoc  $in_files \
+--standalone \
+--css=$stylesheet \
+--output $CURRDIR/$outfile.html
+
+pagedjs-cli -h $debug -o $CURRDIR/$outfile.pdf $CURRDIR/$outfile.html
+
+rm $CURRDIR/$outfile.html
 
 # -----------------------------------------------------------------
