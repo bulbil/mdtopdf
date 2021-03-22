@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------
 VERSION=0.1.0
 SUBJECT=mdtopdf
-USAGE="Usage: mdtopdf -pfised args"
+USAGE="Usage: mdtopdf -pfisd args"
 
 # --- Option processing --------------------------------------------
 if [ $# == 0 ] ; then
@@ -30,7 +30,6 @@ DEFINE_string prefix '' 'output file prefix' p
 DEFINE_string infile '*md' 'input file' f
 DEFINE_string indir '' 'input directory' i
 DEFINE_string style 'custom' 'stylesheet path' s
-DEFINE_string engine 'weasyprint' 'css engine' e
 DEFINE_string debug '' 'debug mode' d
 
 # parse command line
@@ -89,15 +88,13 @@ echo -e '\n'
 
 cd $BASE
 
-# pandoc --standalone --pdf-engine=$FLAGS_engine --css=$stylesheet \
-# --output $CURRDIR/$outfile.pdf $in_files
-
 pandoc  $in_files \
 --standalone \
 --css=$stylesheet \
 --output $CURRDIR/$outfile.html
 
-pagedjs-cli -h $debug -o $CURRDIR/$outfile.pdf $CURRDIR/$outfile.html
+pagedjs-cli $CURRDIR/$outfile.html \
+    $debug -h -o $CURRDIR/$outfile.pdf 
 
 rm $CURRDIR/$outfile.html
 

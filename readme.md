@@ -8,7 +8,7 @@ Fairly specific to my habits, but in the off chance others may find it useful, h
 
 ### Why?
 
-- [WeasyPrint](https://weasyprint.org/) + [CSS3 Paged Media standards](https://drafts.csswg.org/css-page-3/) are pretty great
+- [paged.js](https://www.pagedjs.org/)~~[WeasyPrint](https://weasyprint.org/)~~ + [CSS3 Paged Media standards](https://drafts.csswg.org/css-page-3/) are pretty great
 - Even my ["word processor"](https://typora.io/) is styled with HTML/CSS, so why futz with LaTeX?
 - Invoking LaTeX as a "solution" for plaintext word processing undermines the power of markdown IMHO and hugely limiting--in terms of bulky platform specific dependencies, annoying syntax hurdles, typography limitations, and domain specific markup. 
 
@@ -18,7 +18,7 @@ Fairly specific to my habits, but in the off chance others may find it useful, h
 2. copy to your preferred user scripts folder, e.g. `~/.username`
 3. symlink to your preferred `bin`, e.g. `ln -s ~/.username/mdtopdf/mdtopdf.sh /usr/local/bin/mdtofpdf`
 4. update/add stylesheet(s) in `mdtopdf` folder
-5. `mdtopdf [-f input-file-path] [-i input-folder-path] [-o output-prefix]`
+5. `mdtopdf [-p output-prefix] [-f input-file-path] [-i input-folder-path] [-s stylesheet]  [-d 1 debug mode]`
 
 ### Depending on?
 
