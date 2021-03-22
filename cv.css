@@ -162,10 +162,13 @@ section.education > ul {
 
 /* project list */
 section.project-list > p {
-  width: 20%;
+  width: 22%;
 }
 
 section.project-list > ul {
   width: 78%;
   margin-left: 22%;
+  margin-top: calc(-1.75 * var(--line-height));
+  margin-bottom: 0;
+  
 }

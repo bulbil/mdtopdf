@@ -1,5 +1,23 @@
+/* requires fonts to be installed locally */
+@font-face {
+  font-family: "Minion Pro";
+  font-style: normal;
+  src: url("/Users/nkashya1/Library/Fonts/MinionPro-Regular.otf");
+}
+
+@font-face {
+  font-family: "Minion Pro";
+  font-style: italic;
+  src: url("/Users/nkashya1/Library/Fonts/MinionPro-It.otf");
+}
+
+@font-face {
+  font-family: "Avenir";
+  font-style: normal;
+  src: url("/System/Library/Fonts/Avenir Next.ttc");
+}
+
 html {
-    /* font-family: minionpro; */
     font-family: "Minion Pro";
     font-size: 11pt;
 }
